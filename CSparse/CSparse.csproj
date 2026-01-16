@@ -23,29 +23,32 @@
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Version 4.3.0
 
-* Add net10.0 and remove net6.0 target framework.
-* Minor optimizations for matrix-vector multiplication.
-* Minor optimizations checking empty Span.
+      * Add net10.0 and remove net6.0 target framework.
+      * Minor optimizations for matrix-vector multiplication.
+      * Minor optimizations checking empty Span.
 
-Version 4.2.0
+      Version 4.2.0
 
-* Make SymbolicColumnStorage class public and update StronglyConnectedComponents and DulmageMendelsohn decomposition accordingly.
+      * Make SymbolicColumnStorage class public and update StronglyConnectedComponents and DulmageMendelsohn decomposition accordingly.
 
-Version 4.1.0
+      Version 4.1.0
 
-* Add overload for creating a sparse matrix from an enumerable of ValueTuple.
-* Add matrix EnumerateIndexedAsValueTuples() to enumerate entries as ValueTuple.
+      * Add overload for creating a sparse matrix from an enumerable of ValueTuple.
+      * Add matrix EnumerateIndexedAsValueTuples() to enumerate entries as ValueTuple.
 
-Version 4.0.0
+      Version 4.0.0
 
-The major version change is due to the removal of obsolete methods in the Converter class. Visibility of that class was changed from public to internal. In case those obsolete methods were still used, please switch to the static conversion methods provided by the SparseMatrix class.
+      The major version change is due to the removal of obsolete methods in the Converter class. Visibility of that class was changed from public to internal. In case those obsolete methods were still used, please switch to the static conversion methods provided by the SparseMatrix class.
 
-Other changes in this version:
+      Other changes in this version:
 
-* Addition of helper method Helper.ValidateStorage(...) to validate the structure of a sparse matrix.
-* Update to GetHashCode() method of CompressedColumnStorage class.
-* Improvements to documentation.
-</PackageReleaseNotes>
+      * Addition of helper method Helper.ValidateStorage(...) to validate the structure of a sparse matrix.
+      * Update to GetHashCode() method of CompressedColumnStorage class.
+      * Improvements to documentation.
+    </PackageReleaseNotes>
+
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\CSparseKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

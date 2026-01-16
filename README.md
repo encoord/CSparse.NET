@@ -33,6 +33,37 @@ CSparse.NET has received support/donations from the following projects:
 
 * BriefFiniteElement.NET - https://github.com/BriefFiniteElementNet
 
+## LGPL Compliance & Building for SAInt
+
+This repository is a fork of **CSparse.NET** maintained by [encoord](https://www.encoord.com/) for use in the **SAInt** software.
+
+### Purpose
+To comply with the **LGPL-2.1+** license, we provide this source code along with the strong-naming key (`CSparseKey.snk`) used to sign the official build distributed with SAInt. 
+
+This ensures that users can modify this library, rebuild it, and replace the DLL in their SAInt installation. Because the public signing key is included here, your modified build will have the same strong name identity (Public Key Token) as the official version, allowing the signed SAInt application to load it without errors.
+
+### How to Build and Replace
+If you wish to modify the CSparse library and use it within SAInt, follow these steps:
+
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/encoord/CSparse.NET.git](https://github.com/encoord/CSparse.NET.git)
+    cd CSparse.NET
+    ```
+
+2.  **Verify Signing Configuration**
+    The project is pre-configured to sign the assembly using `CSparseKey.snk` (located in the root/project folder). You can verify this in Visual Studio by right-clicking the Project > **Properties** > **Signing**, where "Sign the assembly" should be checked and set to `CSparseKey.snk`.
+
+3.  **Build the Project**
+    You can build using Visual Studio. We recommend building in **Release** mode to match the optimization of the installed software.
+
+4.  **Replace the DLL**
+    * Locate your new build artifact (e.g., `bin\Release\net48\CSparse.dll`).
+    * Navigate to your **SAInt** installation directory.
+    * Backup the existing `CSparse.dll`.
+    * Copy your new `CSparse.dll` into the folder.
+    * Restart SAInt. The application will now use your modified library.
+
 ## License
 
     CSparse: a Concise Sparse Matrix package.
