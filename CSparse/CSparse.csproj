@@ -1,51 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0;net10.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;</TargetFrameworks>
+
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
     <PackageId>CSparse</PackageId>
-    <Summary>A concise library for solving sparse linear systems with direct methods.</Summary>
-    <Description>CSparse.NET provides numerical methods for sparse LU, Cholesky and QR decomposition of real and complex linear systems.</Description>
-    <Product>CSparse.NET</Product>
-    <Company />
+    <Product>CSparse.NET (encoord edition)</Product>
+    <Company>encoord</Company>
+    <Authors>encoord</Authors>
+    <Description>A custom build of CSparse.NET signed specifically for the SAInt software platform. Forked from the original project at https://github.com/wo80/CSparse.NET.</Description>
+
     <Copyright>Copyright Christian Woltering © 2012-2025</Copyright>
-    <Authors>Christian Woltering</Authors>
+    <PackageLicenseExpression>LGPL-2.1-only</PackageLicenseExpression>
+
+    <Version>4.3.0</Version>
     <AssemblyVersion>4.3.0.0</AssemblyVersion>
     <FileVersion>4.3.0.0</FileVersion>
-    <PackageTags>math sparse matrix lu cholesky qr decomposition factorization </PackageTags>
-    <Version>4.3.0</Version>
+
+    <PackageProjectUrl>https://github.com/encoord/CSparse.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/encoord/CSparse.NET.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>math sparse matrix lu cholesky qr decomposition factorization encoord SAInt</PackageTags>
+    <PackageReleaseNotes>Forked from CSparse.NET v4.3.0. Signed with CSparseKey.snk for SAInt compatibility.</PackageReleaseNotes>
+
     <AssemblyName>CSparse</AssemblyName>
     <RootNamespace>CSparse</RootNamespace>
-    <PackageLicenseExpression>LGPL-2.1-only</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/wo80/CSparse.NET</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/wo80/CSparse.NET.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Version 4.3.0
-
-      * Add net10.0 and remove net6.0 target framework.
-      * Minor optimizations for matrix-vector multiplication.
-      * Minor optimizations checking empty Span.
-
-      Version 4.2.0
-
-      * Make SymbolicColumnStorage class public and update StronglyConnectedComponents and DulmageMendelsohn decomposition accordingly.
-
-      Version 4.1.0
-
-      * Add overload for creating a sparse matrix from an enumerable of ValueTuple.
-      * Add matrix EnumerateIndexedAsValueTuples() to enumerate entries as ValueTuple.
-
-      Version 4.0.0
-
-      The major version change is due to the removal of obsolete methods in the Converter class. Visibility of that class was changed from public to internal. In case those obsolete methods were still used, please switch to the static conversion methods provided by the SparseMatrix class.
-
-      Other changes in this version:
-
-      * Addition of helper method Helper.ValidateStorage(...) to validate the structure of a sparse matrix.
-      * Update to GetHashCode() method of CompressedColumnStorage class.
-      * Improvements to documentation.
-    </PackageReleaseNotes>
 
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\CSparseKey.snk</AssemblyOriginatorKeyFile>
