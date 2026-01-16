@@ -41,6 +41,25 @@ namespace CSparse.Tests.Double.Factorization
         }
 
         [Test]
+        public void TestPivotNotFoundException()
+        {
+            // Load matrix from a file.
+            var A = ResourceLoader.Get<double>("pivoterror-103x103.mat");
+
+            // Create test data.
+            var x = Helper.CreateTestVector(A.ColumnCount);
+            var b = Helper.Multiply(A, x);
+            var r = Vector.Clone(b);
+
+            // Create LU factorization.
+
+            Assert.Throws<PivotNotFoundException>(() =>
+            {
+                var lu = SparseLU.Create(A, ColumnOrdering.MinimumDegreeAtPlusA, 1.0);
+            });
+        }
+
+        [Test]
         public void TestSolveTranspose()
         {
             // Load matrix from a file.

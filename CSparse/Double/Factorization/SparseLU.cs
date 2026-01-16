@@ -4,6 +4,52 @@ namespace CSparse.Double.Factorization
     using CSparse.Ordering;
     using CSparse.Storage;
     using System;
+    using System.Diagnostics;
+
+    /// <summary>
+    /// Exception thrown when a pivot element is not found during LU factorization.
+    /// </summary>
+    public class PivotNotFoundException : Exception
+    {
+        /// <summary>
+        /// Gets the column index where the pivot was not found.
+        /// </summary>
+        public int Column { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PivotNotFoundException"/> class.
+        /// </summary>
+        /// <param name="column">The column index where the pivot was not found.</param>
+        public PivotNotFoundException(int column)
+            : base($"No pivot element found in column {column}.")
+        {
+            Column = column;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PivotNotFoundException"/> class with a custom message.
+        /// </summary>
+        /// <param name="column">The column index where the pivot was not found.</param>
+        /// <param name="message">The custom error message.</param>
+        public PivotNotFoundException(int column, string message)
+            : base(message)
+        {
+            Column = column;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PivotNotFoundException"/> class with a custom message and inner exception.
+        /// </summary>
+        /// <param name="column">The column index where the pivot was not found.</param>
+        /// <param name="message">The custom error message.</param>
+        /// <param name="innerException">The inner exception.</param>
+        public PivotNotFoundException(int column, string message, Exception innerException)
+            : base(message, innerException)
+        {
+            Column = column;
+        }
+    }
+
 
     /// <summary>
     /// Sparse LU decomposition.
@@ -255,9 +301,9 @@ namespace CSparse.Double.Factorization
                     }
                 }
 
-                if (ipiv == -1 || a <= 0.0)
+                if (ipiv == -1 || a <= 0.00000000001)
                 {
-                    throw new Exception("No pivot element found.");
+                    throw new PivotNotFoundException(col);
                 }
 
                 if (pinv[col] < 0 && Math.Abs(x[col]) >= a * tol)
