@@ -47,7 +47,7 @@ If you wish to modify the CSparse library and use it within SAInt, follow these 
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/encoord/CSparse.NET.git](https://github.com/encoord/CSparse.NET.git)
+    git clone https://github.com/encoord/CSparse.NET.git
     cd CSparse.NET
     ```
 
@@ -58,7 +58,7 @@ If you wish to modify the CSparse library and use it within SAInt, follow these 
     You can build using Visual Studio. We recommend building in **Release** mode to match the optimization of the installed software.
 
 4.  **Replace the DLL**
-    * Locate your new build artifact (e.g., `bin\Release\net48\CSparse.dll`).
+    * Locate your new build artifact (e.g., `bin\Release\netstandard2.0\CSparse.dll`).
     * Navigate to your **SAInt** installation directory.
     * Backup the existing `CSparse.dll`.
     * Copy your new `CSparse.dll` into the folder.
