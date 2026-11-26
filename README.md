@@ -36,6 +36,9 @@ CSparse.NET has received support/donations from the following projects:
 ## LGPL Compliance & Building for SAInt
 
 This repository is a fork of **CSparse.NET** maintained by [encoord](https://www.encoord.com/) for use in the **SAInt** software.
+The changes to the upstream code are listed in [CHANGELOG.md](CHANGELOG.md) under "encoord edition". Each `CSparse.dll`
+that SAInt ships is built from a tag of this repository named `v<upstream version>-encoord.<n>`; the SAInt third-party
+notices link to that tag.
 
 ### Purpose
 To comply with the **LGPL-2.1+** license, we provide this source code along with the strong-naming key (`CSparseKey.snk`) used to sign the official build distributed with SAInt. 
@@ -63,6 +66,11 @@ If you wish to modify the CSparse library and use it within SAInt, follow these 
     * Backup the existing `CSparse.dll`.
     * Copy your new `CSparse.dll` into the folder.
     * Restart SAInt. The application will now use your modified library.
+
+### SuiteSparse KLU
+SAInt also ships the SuiteSparse libraries KLU, BTF, AMD, COLAMD and SuiteSparse_config (LGPL-2.1+ and BSD-3-Clause).
+They are built from the unmodified SuiteSparse 7.10.1 source; [native/suitesparse-klu](native/suitesparse-klu) has
+the build script and instructions.
 
 ## License
 

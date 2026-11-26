@@ -1,3 +1,13 @@
+### Version 4.3.0-encoord.1 - 2026-11-26 (encoord edition, based on upstream 4.3.0)
+
+Changes by encoord GmbH to the upstream release 4.3.0, for use in SAInt:
+
+* `Double.Factorization.SparseLU`: pivots with a magnitude of at most 1E-11 are treated as zero (upstream: 0.0).
+* `Double.Factorization.SparseLU`: a missing pivot throws the new `PivotNotFoundException`, which names the column.
+* The assembly is strong-name signed with `CSparseKey.snk`, which is part of this repository.
+* Package metadata (product, company, description, project URLs) names the encoord edition; only the netstandard2.0 target is built.
+* `native/suitesparse-klu`: script used to build the SuiteSparse KLU libraries that SAInt ships (not part of CSparse.dll).
+
 ### Version 4.3.0 - 2025-11-11
 
 * Add net10.0 and remove net6.0 target framework.

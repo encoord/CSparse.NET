@@ -1,3 +1,7 @@
+// Modified by encoord GmbH (2025-2026), see CHANGELOG.md, "encoord edition":
+// - Pivots with a magnitude of at most 1E-11 are treated as zero (upstream: 0.0).
+// - A missing pivot throws PivotNotFoundException, which names the column.
+
 namespace CSparse.Double.Factorization
 {
     using CSparse.Factorization;

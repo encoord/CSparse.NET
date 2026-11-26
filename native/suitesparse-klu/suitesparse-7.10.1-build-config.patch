@@ -1,0 +1,59 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2a73790..4068de9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -458,17 +458,17 @@ if ( "spqr" IN_LIST SUITESPARSE_ENABLE_PROJECTS )
+     endif ( )
+ endif ( )
+ 
+-if ( "spex" IN_LIST SUITESPARSE_ENABLE_PROJECTS )
+-    add_subdirectory ( "SPEX" )
+-    if ( TARGET SPEX )
+-        add_library ( SuiteSparse::SPEX ALIAS SPEX )
+-    else ( )
+-        add_library ( SuiteSparse::SPEX ALIAS SPEX_static )
+-    endif ( )
+-    if ( TARGET SPEX_static )
+-        add_library ( SuiteSparse::SPEX_static ALIAS SPEX_static )
+-    endif ( )
+-endif ( )
++# if ( "spex" IN_LIST SUITESPARSE_ENABLE_PROJECTS )
++    # add_subdirectory ( "SPEX" )
++    # if ( TARGET SPEX )
++        # add_library ( SuiteSparse::SPEX ALIAS SPEX )
++    # else ( )
++        # add_library ( SuiteSparse::SPEX ALIAS SPEX_static )
++    # endif ( )
++    # if ( TARGET SPEX_static )
++        # add_library ( SuiteSparse::SPEX_static ALIAS SPEX_static )
++    # endif ( )
++# endif ( )
+ 
+ if ( "graphblas" IN_LIST SUITESPARSE_ENABLE_PROJECTS )
+     add_subdirectory ( "GraphBLAS" )
+diff --git a/SuiteSparse_config/cmake_modules/SuiteSparseBLAS.cmake b/SuiteSparse_config/cmake_modules/SuiteSparseBLAS.cmake
+index 327dfdf..afe29a5 100644
+--- a/SuiteSparse_config/cmake_modules/SuiteSparseBLAS.cmake
++++ b/SuiteSparse_config/cmake_modules/SuiteSparseBLAS.cmake
+@@ -17,6 +17,8 @@
+ 
+ cmake_minimum_required ( VERSION 3.22 )
+ 
++set(BLAS_LIBRARIES "${CMAKE_SOURCE_DIR}/OpenBLAS-0.3.29_x64/lib/libopenblas.lib")
++
+ # To select a specific BLAS: set to the BLA_VENDOR options from FindBLAS.cmake
+ if ( DEFINED ENV{BLA_VENDOR} )
+     set ( BLA_VENDOR $ENV{BLA_VENDOR} )
+diff --git a/SuiteSparse_config/cmake_modules/SuiteSparseLAPACK.cmake b/SuiteSparse_config/cmake_modules/SuiteSparseLAPACK.cmake
+index 82366e0..09dd3e3 100644
+--- a/SuiteSparse_config/cmake_modules/SuiteSparseLAPACK.cmake
++++ b/SuiteSparse_config/cmake_modules/SuiteSparseLAPACK.cmake
+@@ -20,6 +20,8 @@
+ 
+ cmake_minimum_required ( VERSION 3.22 )
+ 
++set(LAPACK_LIBRARIES "${CMAKE_SOURCE_DIR}/OpenBLAS-0.3.29_x64/lib/libopenblas.lib")
++
+ if ( DEFINED LAPACK_LIBRARIES OR DEFINED LAPACK_INCLUDE_DIRS )
+     # User supplied variables for libraries and/or include directories.
+     # Use them as-is.
